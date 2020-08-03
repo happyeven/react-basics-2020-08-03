@@ -11,7 +11,7 @@ class CounterGroup extends React.Component {
         if (regString.test(newSize)) {
             return
         }
-        if(this.state.size === parseInt(newSize)){
+        if (this.state.size === parseInt(newSize)) {
             return
         }
         this.setState({
@@ -32,7 +32,11 @@ class CounterGroup extends React.Component {
         }))
     }
 
+    handleValueChange = () =>{
+        this.setState({totalValue :this.props.store.getState() })
+    }
     render() {
+        const {store } = this.props
         const initArray = [...Array(this.state.size).keys()]
         return <div>
             <div>
@@ -46,8 +50,15 @@ class CounterGroup extends React.Component {
                     totalValue : <mark>{this.state.totalValue}</mark>
                 </label>
             </div>
+            <div>
+                <label>
+                    state : <mark>{this.props.store.getState()}</mark>
+                </label>
+            </div>
             {
-                initArray.map(key => <Counter onIncrease={this.handleIncrease} groupSize={this.state.size} onDecrease={this.handleDecrease} key={key} />)
+                initArray.map(key => <Counter handleIncrease = {this.handleIncrease} handleDecrease = {this.handleDecrease}
+                    store = {store}  key={key} handleValueChange = {this.handleValueChange}
+                />)
             }
         </div>
     }

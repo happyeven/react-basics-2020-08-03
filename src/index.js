@@ -12,9 +12,6 @@ const store = createStore(counter)
 const rootEl = document.getElementById('root')
 const render = () => ReactDOM.render(
   <CounterGroup
-    // value={store.getState()}
-    // onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-    // onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
     store = {store}
   />,
   rootEl

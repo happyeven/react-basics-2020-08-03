@@ -28,22 +28,19 @@ class Counter extends React.Component {
         </div>
     }
 
-    // static getDerivedStateFromProps(props, state) {
-    //     if (props.groupSize !== state.groupSize) {
-    //         return {
-    //             groupSize: props.groupSize,
-    //             value: 0
-    //         }
-    //     }
-    //     return null
-    // }
-
-     componentWillUnmount() {
-        console.log("come in ")
+    componentWillUnmount() {
         if (this.state.value > 0) {
-            this.store.dispatch({ type: 'DECREMENT' })
+            for (let i = 0; i < this.state.value; i++) {
+                this.store.dispatch({ type: 'DECREMENT' })
+            }
+            console.log(this.store.getState())
+            this.props.handleValueChange();
+            return;
         }
-        this.store.dispatch({ type: 'INCREMENT' })
+        for (let i = this.state.value * (-1); i > 0; i--) {
+            this.store.dispatch({ type: 'INCREMENT' })
+        }
+        this.props.handleValueChange();
     }
 }
 

@@ -37,7 +37,7 @@ class Counter extends React.Component {
             this.props.handleValueChange();
             return;
         }
-        for (let i = this.state.value * (-1); i > 0; i--) {
+        for (let i = 0; i < this.state.value * (-1); i++) {
             this.store.dispatch({ type: 'INCREMENT' })
         }
         this.props.handleValueChange();

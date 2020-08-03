@@ -7,11 +7,11 @@ class CounterGroup extends React.Component {
         this.state = { size: 0 }
     }
     onChangesize = (event) => {
-        let newSize = event.target.value
-        let regString = /[a-zA-Z]+/
-        if (regString.test(newSize)) {
+        let newSize = event.target.value.match(/\d+/g)
+        if(newSize === null){
             return
         }
+        newSize = newSize.join("")
         if (this.state.size === parseInt(newSize)) {
             return
         }

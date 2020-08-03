@@ -7,7 +7,6 @@ import { createStore } from 'redux'
 import CounterGroup from './component/CounterGroup';
 import counter from './reducers'
 
-
 const store = createStore(counter)
 const rootEl = document.getElementById('root')
 const render = () => ReactDOM.render(

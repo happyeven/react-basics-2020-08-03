@@ -11,6 +11,9 @@ class CounterGroup extends React.Component {
         if (regString.test(newSize)) {
             return
         }
+        if(this.state.size === parseInt(newSize)){
+            return
+        }
         this.setState({
             size: parseInt(newSize),
             totalValue: 0

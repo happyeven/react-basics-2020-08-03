@@ -1,6 +1,5 @@
 import React from 'react';
-import { createStore } from 'redux'
-import counter from '../../reducers'
+
 
 class Counter extends React.Component {
     constructor(props) {

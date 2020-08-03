@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <CounterGroup />
+        <CounterGroup  store = {this.props.store}/>
       </header>
     </div>
   );

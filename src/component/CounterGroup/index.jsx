@@ -1,14 +1,17 @@
 import React from 'react';
 import Counter from '../Counter'
+import { connect } from 'react-redux';
+import { DECREMENT, INCREMENT } from '../../action/actionType'
+
 class CounterGroup extends React.Component {
     constructor(props) {
+        console.log(props.totalValue);
         super(props)
-        this.store = props.store
         this.state = { size: 0 }
     }
     onChangesize = (event) => {
         let newSize = event.target.value.match(/\d+/g)
-        if(newSize === null){
+        if (newSize === null) {
             return
         }
         newSize = newSize.join("")
@@ -35,7 +38,7 @@ class CounterGroup extends React.Component {
             </div>
             <div>
                 <label>
-                    totalValue : <mark>{this.props.store.getState()}</mark>
+                    totalValue : <mark>{this.props.totalValue}</mark>
                 </label>
             </div>
             {
@@ -43,10 +46,21 @@ class CounterGroup extends React.Component {
                     store={this.store}
                     key={key}
                     handleValueChange={this.handleValueChange}
+                    id={key}
+                    addNumber={this.props.addNumber}
+                    decrement={this.props.decrement}
                 />)
             }
         </div>
     }
 }
+const mapStateToProps = state => {
+    return { totalValue: state.totalValue }
+}
 
-export default CounterGroup
+const mapDispatchToProps = dispatch => ({
+    addNumber: () => dispatch({ type: INCREMENT }),
+    decrement: () => dispatch({ type: DECREMENT }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CounterGroup)

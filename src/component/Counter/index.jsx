@@ -10,12 +10,12 @@ class Counter extends React.Component {
 
     handleIncrease = () => {
         this.setState(prevState => ({ value: prevState.value + 1 }))
-        this.store.dispatch({ type: 'INCREMENT' })
+        this.props.addNumber()
         this.props.handleValueChange()
     }
     handleDecrease = () => {
         this.setState(prevState => ({ value: prevState.value - 1 }))
-        this.store.dispatch({ type: 'DECREMENT' })
+        this.props.decrement()
         this.props.handleValueChange()
     }
     render() {
@@ -29,14 +29,13 @@ class Counter extends React.Component {
     componentWillUnmount() {
         if (this.state.value > 0) {
             for (let i = 0; i < this.state.value; i++) {
-                this.store.dispatch({ type: 'DECREMENT' })
+                this.props.decrement()
             }
-            console.log(this.store.getState())
             this.props.handleValueChange();
             return;
         }
         for (let i = 0; i < this.state.value * (-1); i++) {
-            this.store.dispatch({ type: 'INCREMENT' })
+            this.props.addNumber()
         }
         this.props.handleValueChange();
     }

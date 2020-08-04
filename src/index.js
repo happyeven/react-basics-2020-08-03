@@ -3,16 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux'
+import {Provider} from 'react-redux'
 import CounterGroup from './component/CounterGroup';
-import counter from './reducers'
+import store from './store'
 
-const store = createStore(counter)
 const rootEl = document.getElementById('root')
 const render = () => ReactDOM.render(
-  <CounterGroup
+  <Provider store={store}><CounterGroup
     store = {store}
-  />,
+  /></Provider>,
   rootEl
 )
 render()

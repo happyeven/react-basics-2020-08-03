@@ -5,7 +5,9 @@ const initState = {
 }//todo why initState not can
 
 export default createReducer(initState, {
-    [INCREMENT]: ((state, action) => ({ totalValue: state.totalValue + 1 })),
+    [INCREMENT]: ((state, action) =>{ 
+        console.log(state.totalValue)
+        return { totalValue: state.totalValue + 1 }}),
     [DECREMENT]: ((state, action) => ({ totalValue: state.totalValue - 1 }))
 })
 

@@ -2,7 +2,8 @@ import React from 'react';
 import Counter from '../Counter'
 import { connect } from 'react-redux';
 import { DECREMENT, INCREMENT } from '../../action/actionType'
-
+import { addNumberAction } from '../.././action'
+import PropTypes from 'prop-types'
 class CounterGroup extends React.Component {
     constructor(props) {
         console.log(props.totalValue);
@@ -54,12 +55,17 @@ class CounterGroup extends React.Component {
         </div>
     }
 }
+CounterGroup.propTypes = {
+    addNumber: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired
+}
+
 const mapStateToProps = state => {
     return { totalValue: state.totalValue }
 }
 
 const mapDispatchToProps = dispatch => ({
-    addNumber: () => dispatch({ type: INCREMENT }),
+    addNumber: addNumberAction,
     decrement: () => dispatch({ type: DECREMENT }),
 })
 

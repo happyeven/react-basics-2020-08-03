@@ -4,11 +4,13 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import CounterGroup from './component/CounterGroup';
 import store from './store';
-
+import { Provider } from 'react-redux'
 const rootEl = document.getElementById('root')
 const render = () => ReactDOM.render(
-  <CounterGroup
-  />,
+  <Provider store = {store}>
+    <CounterGroup
+    />
+  </Provider>,
   rootEl
 )
 render()

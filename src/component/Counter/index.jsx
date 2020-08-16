@@ -26,17 +26,7 @@ class Counter extends React.Component {
     }
 
     componentWillUnmount() {
-        if (this.state.value > 0) {
-            for (let i = 0; i < this.state.value; i++) {
-                store.dispatch({ type: 'DECREMENT',value : this.state.value })
-            }
-            console.log(store.getState())
-            this.props.handleValueChange();
-            return;
-        }
-        for (let i = 0; i < this.state.value * (-1); i++) {
-            store.dispatch({ type: 'INCREMENT',value : this.state.value })
-        }
+        store.dispatch({ type: 'counterUnmount', value: this.state.value })
         this.props.handleValueChange();
     }
 }

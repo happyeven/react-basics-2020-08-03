@@ -1,14 +1,19 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {INCREMENT,DECREMENT,COUNTERUNMOUNT} from '../action/ActionType'
-export default createReducer(0,{
+
+const initState = {
+    totalValue: 0
+}
+
+export default createReducer(initState,{
     [INCREMENT] : (state , action) =>({
-        totalValue : state + 1
+        totalValue : state.totalValue + 1
     }),
     [DECREMENT] : (state,action) => ({
-        totalValue : state - 1
+        totalValue : state.totalValue - 1
     }),
     [COUNTERUNMOUNT] : (state,action) => ({
-        totalValue : state - action.payload
+        totalValue : state.totalValue - action.payload
     })
 })
 

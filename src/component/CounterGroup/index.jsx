@@ -51,7 +51,7 @@ class CounterGroup extends React.Component {
 }
 const mapStateToProps = state => {
     return {
-        totalValue: state
+        totalValue: state.totalValue
     }
 }
 

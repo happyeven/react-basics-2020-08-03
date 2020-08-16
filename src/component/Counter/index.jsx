@@ -1,21 +1,20 @@
 import React from 'react';
-
+import store from '../../store'
 
 class Counter extends React.Component {
     constructor(props) {
         super(props)
-        this.store = props.store
         this.state = { value: 0, groupSize: 0 }
     }
 
     handleIncrease = () => {
         this.setState(prevState => ({ value: prevState.value + 1 }))
-        this.store.dispatch({ type: 'INCREMENT' })
+        store.dispatch({ type: 'INCREMENT' })
         this.props.handleValueChange()
     }
     handleDecrease = () => {
         this.setState(prevState => ({ value: prevState.value - 1 }))
-        this.store.dispatch({ type: 'DECREMENT' })
+        store.dispatch({ type: 'DECREMENT' })
         this.props.handleValueChange()
     }
     render() {
@@ -29,14 +28,14 @@ class Counter extends React.Component {
     componentWillUnmount() {
         if (this.state.value > 0) {
             for (let i = 0; i < this.state.value; i++) {
-                this.store.dispatch({ type: 'DECREMENT' })
+                store.dispatch({ type: 'DECREMENT',value : this.state.value })
             }
-            console.log(this.store.getState())
+            console.log(store.getState())
             this.props.handleValueChange();
             return;
         }
         for (let i = 0; i < this.state.value * (-1); i++) {
-            this.store.dispatch({ type: 'INCREMENT' })
+            store.dispatch({ type: 'INCREMENT',value : this.state.value })
         }
         this.props.handleValueChange();
     }

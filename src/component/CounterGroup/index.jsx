@@ -1,9 +1,9 @@
 import React from 'react';
 import Counter from '../Counter'
+import store from '../../store'
 class CounterGroup extends React.Component {
     constructor(props) {
         super(props)
-        this.store = props.store
         this.state = { size: 0 }
     }
     onChangesize = (event) => {
@@ -22,7 +22,7 @@ class CounterGroup extends React.Component {
     }
 
     handleValueChange = () => {
-        this.setState({ totalValue: this.props.store.getState() })
+        this.setState({ totalValue: store.getState() })
     }
     render() {
         const initArray = [...Array(this.state.size).keys()]
@@ -35,12 +35,12 @@ class CounterGroup extends React.Component {
             </div>
             <div>
                 <label>
-                    totalValue : <mark>{this.props.store.getState()}</mark>
+                    totalValue : <mark>{store.getState()}</mark>
                 </label>
             </div>
             {
                 initArray.map(key => <Counter
-                    store={this.store}
+                    store={store}
                     key={key}
                     handleValueChange={this.handleValueChange}
                 />)

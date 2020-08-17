@@ -12,9 +12,10 @@ export default createReducer(initState,{
     [DECREMENT] : (state,action) => ({
         totalValue : state.totalValue - 1
     }),
-    [COUNTERUNMOUNT] : (state,action) => ({
-        totalValue : state.totalValue - action.payload
-    })
+    [COUNTERUNMOUNT] : (state,action) => {
+        console.log("action",action);
+         return {totalValue : state.totalValue - action.value}}
+        
 })
 
 

@@ -14,7 +14,7 @@ export default createReducer(initState,{
     }),
     [COUNTERUNMOUNT] : (state,action) => {
         console.log("action",action);
-         return {totalValue : state.totalValue - action.value}}
+         return {totalValue : state.totalValue - action.payload.value}}
         
 })
 

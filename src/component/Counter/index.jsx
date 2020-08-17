@@ -30,7 +30,7 @@ class Counter extends React.Component {
     }
 
     componentWillUnmount() {
-        store.dispatch({ type: 'COUNTERUNMOUNT', value: this.state.value })
+        this.props.decreCounterValue(this.state.value)
         this.props.handleValueChange();
     }
 }

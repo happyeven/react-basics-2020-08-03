@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 class CounterGroup extends React.Component {
     constructor(props) {
-        console.log(props.totalValue);
         super(props)
         this.state = { size: 0 }
     }
@@ -20,13 +19,9 @@ class CounterGroup extends React.Component {
         }
         this.setState({
             size: parseInt(newSize),
-            totalValue: 0
         })
     }
 
-    handleValueChange = () => {
-        this.setState({ totalValue: this.props.totalValue })
-    }
     render() {
         const initArray = [...Array(this.state.size).keys()]
         return <div>
@@ -44,10 +39,7 @@ class CounterGroup extends React.Component {
             {
                 initArray.map(key => <Counter
                     key={key}
-                    handleValueChange={this.handleValueChange}
                     id={key}
-                    addNumber={this.props.addNumber}
-                    decrement={this.props.decrement}
                 />)
             }
         </div>
